@@ -1,3 +1,4 @@
+import cors from "cors";
 import dotenv from "dotenv";
 import express from "express";
 import mongoose from "mongoose";
@@ -24,6 +25,11 @@ mongoose
     console.log(error);
   });
 
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL,
+  })
+);
 app.use("/api/guitars", guitarsRoute);
 
 // !! Your middleware should not go below this line !!
